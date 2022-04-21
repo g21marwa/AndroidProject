@@ -17,6 +17,7 @@ class Cell{
    private int size = 32;
    private Canvas c;
    private ArrayList<Cell> neighbours;
+   private boolean tempAlive = false;
    Cell(int posX, int posY, int getSize, boolean l){
       pos[0] = posX;
       pos[1] = posY;
@@ -32,7 +33,7 @@ class Cell{
    public void draw(Canvas getCanvas, Paint paint){
       c = getCanvas;
       paint.setStyle(Paint.Style.FILL_AND_STROKE);
-      if(alive){
+      if(alive ||tempAlive){
          paint.setColor(Color.parseColor("#00ff00"));
       }
       else{
@@ -47,6 +48,7 @@ class Cell{
       printNeighbours();
    }
    public void calcAlive(){
+      Log.d("asd33", "ddd");
       int numNeighboursAlive = 0;
       for(int i = 0; i < neighbours.size(); i++){
          if(neighbours.get(i).getAlive()){
@@ -84,5 +86,18 @@ class Cell{
 
    public int[] getPos() {
       return pos;
+   }
+
+   public void setTempAlive(boolean tempAlive) {
+      this.tempAlive = tempAlive;
+   }
+
+   public boolean isTempAlive() {
+      return tempAlive;
+   }
+
+   public void insertTempAlive(){
+      alive = true;
+      nextAlive = true;
    }
 }

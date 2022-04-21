@@ -13,6 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class DynamicView extends View implements View.OnTouchListener {
@@ -30,11 +32,11 @@ public class DynamicView extends View implements View.OnTouchListener {
     private boolean hasLoaded = false;
     private int numCellsHeight;
     private int numCellsWidth;
-    private int shape1[][] = {
-            {1,1,1},
-            {0,0,1},
-            {0,1,0}
-    };
+    private HashMap<String, List<int[]>> shapes;
+    private String selectedShape = "";
+    private List<Cell> prevTempCells;
+    private int prevFreehand = 0;
+    private int currentFreeHand = 0;
     public DynamicView(Context context, AttributeSet attr){
         super(context, attr);
 
@@ -50,6 +52,8 @@ public class DynamicView extends View implements View.OnTouchListener {
     @Override
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
+        prevTempCells = new ArrayList<>();
+        initShapes();
         hasLoaded = true;
         viewWidth = getWidth();
         viewHeight = getHeight();
@@ -192,25 +196,59 @@ public class DynamicView extends View implements View.OnTouchListener {
     }
     @Override
     public boolean onTouch(View view, MotionEvent m){
-        double x, y;
-        switch (m.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                x = m.getX();
-                y = m.getY();
-                int pos = (int)Math.floor(y/size) + (int)Math.floor(x/size);
-        }
         return true;
     }
     @Override
     public boolean onTouchEvent(MotionEvent m){
         double x, y;
+        x = m.getX();
+        y = m.getY();
+        int pos = (int)(Math.floor(y/size)*numCellsWidth) + (int)Math.floor(x/size);
+        Log.d("asd3", "" + m.getAction());
+        Log.d("asd3", selectedShape);
         switch (m.getAction()){
             case MotionEvent.ACTION_DOWN:
-                x = m.getX();
-                y = m.getY();
-                int pos = (int)(Math.floor(y/size)*numCellsWidth) + (int)Math.floor(x/size);
-                Log.d("asd3", "" + viewWidth/size);
-                cells.get(pos).changeAlive();
+                Log.d("asd3", selectedShape);
+                if(selectedShape.equals("Freehand") ){
+                    Log.d("asd3", "" + viewWidth/size);
+                                      //(int)(Math.floor(y/size)*numCellsWidth) + (int)Math.floor(x/size);
+                    currentFreeHand = (int)(Math.floor(m.getY()/size)*numCellsWidth)+(int)Math.floor(m.getX()/size);
+                    prevFreehand = currentFreeHand;
+
+                    cells.get(pos).changeAlive();
+                }
+                else{
+                    Log.d("asd3", selectedShape);
+
+                    showShape(pos, y);
+                }
+                return true;
+                case MotionEvent.ACTION_MOVE:
+                    if(selectedShape.equals("Freehand")) {
+                        currentFreeHand = (int)(Math.floor(m.getY()/size)*numCellsWidth)+(int)Math.floor(m.getX()/size);
+                        if(prevFreehand != currentFreeHand){
+                            cells.get(pos).changeAlive();
+                            prevFreehand = currentFreeHand;
+                        }
+                    }
+                    else {
+                        showShape(pos, y);
+                    }
+                    return true;
+                case MotionEvent.ACTION_UP:
+                    if(selectedShape.equals("Freehand")){
+                        currentFreeHand = 0;
+                        prevFreehand = 0;
+                    }
+                    else {
+                        Log.d("asd4", "" + prevTempCells.size());
+                        for (int i = 0; i < prevTempCells.size(); i++) {
+                            prevTempCells.get(i).insertTempAlive();
+                            prevTempCells.get(i).setTempAlive(false);
+                        }
+                        prevTempCells.clear();
+                    }
+                    return true;
         }
         return super.onTouchEvent(m);
     }
@@ -218,8 +256,35 @@ public class DynamicView extends View implements View.OnTouchListener {
         state = !state;
     }
     public void setSelectedShape(String getShape){
-        if(getShape == "Shape 1"){
-
+        selectedShape = getShape;
+    }
+    private void showShape(int pos, double y){
+        int arrHeight = shapes.get(selectedShape).size();
+        int arrWidth = shapes.get(selectedShape).get(0).length;
+        if (cells.size() - numCellsWidth > ((arrHeight + Math.floor((y / size))) * numCellsWidth) && pos >= 0) {
+            if (pos + arrWidth % numCellsWidth >= numCellsWidth - 1) {
+                Log.d("asd2", "" +prevTempCells.size());
+                for (int i = 0; i < prevTempCells.size(); i++) {
+                    prevTempCells.get(i).setTempAlive(false);
+                }
+                prevTempCells.clear();
+                for (int i = 0; i < arrHeight; i++) {
+                    for (int j = 0; j < arrWidth; j++) {
+                        if (shapes.get(selectedShape).get(i)[j] == 1) {
+                            cells.get(pos + (i * numCellsWidth) + j).setTempAlive(true);
+                            prevTempCells.add(cells.get(pos + (i * numCellsWidth) + j));
+                        }
+                    }
+                }
+            }
         }
+    }
+    private void initShapes(){
+        shapes = new HashMap<>();
+        List<int[]> shapeList = new ArrayList<int[]>();
+        shapeList.add(new int[] {1,1,1});
+        shapeList.add(new int[] {0,0,1});
+        shapeList.add(new int[] {0,1,0});
+        shapes.put("Shape 1", shapeList);
     }
 }

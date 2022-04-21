@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String a = (String)adapterView.getItemAtPosition(i);
         Log.d("asd", a);
+        dv.setSelectedShape(a);
     }
 
     @Override
