@@ -8,23 +8,29 @@
     tools:context=".GolActivity">
 
 
-  <androidx.appcompat.widget.Toolbar
-      android:id="@+id/gol_toolbar"
+  <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="?attr/colorPrimary"
-      android:minHeight="?attr/actionBarSize"
-      android:theme="?attr/actionBarTheme"
+      app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
+      android:id="@+id/gol_toolbar"
+      android:orientation="horizontal">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gol_start"
+        android:text="Start"
+        android:onClick="startClicked"
+        tools:ignore="OnClick" />
 
-  </androidx.appcompat.widget.Toolbar>
+  </LinearLayout>
   <com.example.dynamicgraphics.DynamicView
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:background="@color/black"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/gol_toolbar"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"/>
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/gol_toolbar"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:id="@+id/gol_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

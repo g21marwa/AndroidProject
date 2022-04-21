@@ -26,8 +26,10 @@ public class DynamicView extends View implements View.OnTouchListener {
     private int width , height;
     private ArrayList<Cell> cells = new ArrayList<>();
     private int size = 32;
-    private int state = 0;
+    private boolean state = false;
     private boolean hasLoaded = false;
+    private int numCellsHeight;
+    private int numCellsWidth;
     public DynamicView(Context context, AttributeSet attr){
         super(context, attr);
 
@@ -55,31 +57,34 @@ public class DynamicView extends View implements View.OnTouchListener {
         paint = new Paint();
         random = new Random();
 
-        int numCellsHeight = viewHeight/size;
-        int numCellsWidth =  viewWidth/size;
+        numCellsHeight = viewHeight/size;
+        numCellsWidth =  viewWidth/size;
         for(int i = 0; i < numCellsHeight;i++){
             for(int j = 0; j < numCellsWidth;j++){
                 boolean l = false;
                 int r = random.nextInt(100);
                 if(r > 85){
-                    l = true;
+                    //change for random generated alive
+                    l = false;
                 }
                 Cell c = new Cell(j*size, i*size, size, l);
                 cells.add(c);
             }
         }
-        for(int i = 0; i < cells.size()-1; i++){
+        for(int i = 0; i < cells.size(); i++){
             ArrayList<Cell> neighbours = new ArrayList<>();
             if(i % numCellsWidth == 0){
                 if(i < numCellsWidth){
                     neighbours.add(cells.get(i+1));
                     neighbours.add(cells.get(i+numCellsWidth));
                     neighbours.add(cells.get(i+numCellsWidth+1));
+                    cells.get(i).setNeighbours(neighbours);
                 }
                 else if(i >= (cells.size()-1)-numCellsWidth){
                     neighbours.add(cells.get(i-numCellsWidth));
                     neighbours.add(cells.get(i-numCellsWidth+1));
                     neighbours.add(cells.get(i+1));
+                    cells.get(i).setNeighbours(neighbours);
                 }
                 else{
                     neighbours.add(cells.get(i-numCellsWidth));
@@ -90,21 +95,21 @@ public class DynamicView extends View implements View.OnTouchListener {
                     cells.get(i).setNeighbours(neighbours);
                 }
             }
-            else if(i % numCellsWidth-1 == 0){
+            else if(i % numCellsWidth == numCellsWidth-1){
                 if(i < numCellsWidth){
                     neighbours.add(cells.get(i-1));
                     neighbours.add(cells.get(i+numCellsWidth-1));
                     neighbours.add(cells.get(i+numCellsWidth));
                     cells.get(i).setNeighbours(neighbours);
                 }
-                else if(i >= (cells.size()-1)-numCellsWidth){
+                else if(i >= (cells.size())-numCellsWidth-1){
                     neighbours.add(cells.get(i-numCellsWidth));
                     neighbours.add(cells.get(i-numCellsWidth-1));
                     neighbours.add(cells.get(i-1));
                     cells.get(i).setNeighbours(neighbours);
                 }
                 else{
-                    neighbours.add(cells.get(i-numCellsWidth));
+                    neighbours.add(cells.get(i-numCellsWidth-1));
                     neighbours.add(cells.get(i-numCellsWidth-1));
                     neighbours.add(cells.get(i-1));
                     neighbours.add(cells.get(i+numCellsWidth-1));
@@ -119,6 +124,7 @@ public class DynamicView extends View implements View.OnTouchListener {
                     neighbours.add(cells.get(i+numCellsWidth-1));
                     neighbours.add(cells.get(i+numCellsWidth));
                     neighbours.add(cells.get(i+numCellsWidth+1));
+                    cells.get(i).setNeighbours(neighbours);
                 }
                 else if(i >= (cells.size()-1)-(numCellsWidth)){
                     int temp = (cells.size()-1)-numCellsWidth;
@@ -127,6 +133,7 @@ public class DynamicView extends View implements View.OnTouchListener {
                     neighbours.add(cells.get(i-numCellsWidth+1));
                     neighbours.add(cells.get(i-1));
                     neighbours.add(cells.get(i+1));
+                    cells.get(i).setNeighbours(neighbours);
                 }
                 else{
                     int temp = (cells.size()-1)-numCellsWidth;
@@ -151,23 +158,29 @@ public class DynamicView extends View implements View.OnTouchListener {
         if(hasLoaded) {
             paint.setColor(Color.argb(255, random.nextInt(255),
             random.nextInt(255), random.nextInt(255)));
-            if (state == 0) {
+            if (state) {
                 for (int i = 0; i < cells.size(); i++) {
                     cells.get(i).draw(canvas, paint);
                 }
                 // and then draw the bitmap on the view canvas
                 canvas.drawBitmap(frame, null, bounds, null);
-                if (i < 20) {
+                if (i < 100) {
                     i++;
                     invalidate();
                 } else {
                     i = 0;
                     for (int i = 0; i < cells.size(); i++) {
-                        cells.get(i).setAlive();
+                        cells.get(i).calcAlive();
+                    }
+                    for (int i = 0; i < cells.size(); i++) {
+                        cells.get(i).change();
                     }
                     invalidate();
                 }
             } else {
+                for (int i = 0; i < cells.size(); i++) {
+                    cells.get(i).draw(canvas, paint);
+                }
                 invalidate();
             }
         }
@@ -190,9 +203,13 @@ public class DynamicView extends View implements View.OnTouchListener {
             case MotionEvent.ACTION_DOWN:
                 x = m.getX();
                 y = m.getY();
-                int pos = (int)Math.floor(y/size) + (int)Math.floor(x/size);
-                Log.d("asd3", "pos: " + pos);
+                int pos = (int)(Math.floor(y/size)*numCellsWidth) + (int)Math.floor(x/size);
+                Log.d("asd3", "" + viewWidth/size);
+                cells.get(pos).changeAlive();
         }
         return super.onTouchEvent(m);
+    }
+    public void changeState(){
+        state = !state;
     }
 }

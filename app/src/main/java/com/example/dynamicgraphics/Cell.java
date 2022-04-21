@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -11,9 +12,10 @@ import java.util.List;
 
 class Cell{
    private boolean alive = false;
+   private boolean nextAlive = false;
    private int pos[] = {0,0};
    private int size = 32;
-   Canvas c;
+   private Canvas c;
    private ArrayList<Cell> neighbours;
    Cell(int posX, int posY, int getSize, boolean l){
       pos[0] = posX;
@@ -38,7 +40,13 @@ class Cell{
       }
       c.drawRect(new Rect(pos[0], pos[1],pos[0]+size, pos[1]+size), paint);
    }
-   public void setAlive(){
+   //during pause
+   public void changeAlive(){
+      alive = !alive;
+      nextAlive = alive;
+      printNeighbours();
+   }
+   public void calcAlive(){
       int numNeighboursAlive = 0;
       for(int i = 0; i < neighbours.size(); i++){
          if(neighbours.get(i).getAlive()){
@@ -47,19 +55,34 @@ class Cell{
       }
       if(!alive){
          if(numNeighboursAlive == 3){
-            alive = true;
+            nextAlive = true;
          }
       }
       else{
          if(numNeighboursAlive < 2 || numNeighboursAlive > 3){
-            alive = false;
+            nextAlive = false;
          }
       }
-
    }
+   //for started application
+   public void setAlive(){
+      nextAlive = !alive;
+   }
+
    public boolean getAlive(){
       return alive;
    }
+   public void change(){
+      alive = nextAlive;
+   }
+   public void printNeighbours(){
+      Log.d("asd4", "x: " + pos[0]/size + " y: " + pos[1]/size);
+      for(int i = 0; i < neighbours.size(); i++){
+         Log.d("asd2", "x: " + neighbours.get(i).getPos()[0]/size + " y: " + neighbours.get(i).getPos()[1]/size);
+      }
+   }
 
-
+   public int[] getPos() {
+      return pos;
+   }
 }
