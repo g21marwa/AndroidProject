@@ -3,6 +3,7 @@ package com.example.dynamicgraphics;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,15 +17,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gol);
         dv = findViewById(R.id.gol_view);
         startButton = findViewById(R.id.gol_start);
+        startButton.setText("Start");
     }
 
     public void startClicked(View v){
-        dv.changeState();
-        if(startButton.getText() == "Start"){
+        if(startButton.getText().toString() == "Start"){
             startButton.setText("Stop");
         }
         else{
             startButton.setText("Start");
         }
+        dv.changeState();
     }
 }
