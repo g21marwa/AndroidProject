@@ -30,6 +30,11 @@ public class DynamicView extends View implements View.OnTouchListener {
     private boolean hasLoaded = false;
     private int numCellsHeight;
     private int numCellsWidth;
+    private int shape1[][] = {
+            {1,1,1},
+            {0,0,1},
+            {0,1,0}
+    };
     public DynamicView(Context context, AttributeSet attr){
         super(context, attr);
 
@@ -211,5 +216,10 @@ public class DynamicView extends View implements View.OnTouchListener {
     }
     public void changeState(){
         state = !state;
+    }
+    public void setSelectedShape(String getShape){
+        if(getShape == "Shape 1"){
+
+        }
     }
 }

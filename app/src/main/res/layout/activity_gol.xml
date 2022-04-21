@@ -15,6 +15,10 @@
       app:layout_constraintStart_toStartOf="parent"
       android:id="@+id/gol_toolbar"
       android:orientation="horizontal">
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      android:id="@+id/gol_spinner"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

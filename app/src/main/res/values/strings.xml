@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DynamicGraphics</string>
+    <string-array name="shapeArray">
+        <item>Shape 1</item>
+        <item>Shape 2</item>
+    </string-array>
 </resources>
