@@ -23,9 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gol_start"
-        android:text="Start"
         android:onClick="startClicked"
-        tools:ignore="OnClick" />
+        tools:ignore="OnClick,UsingOnClickInXml" />
 
   </LinearLayout>
   <com.example.dynamicgraphics.DynamicView
