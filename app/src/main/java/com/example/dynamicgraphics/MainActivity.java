@@ -14,6 +14,7 @@ import android.widget.Spinner;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private DynamicView dv;
     private Button startButton;
+    private Button resetButton;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         dv = findViewById(R.id.gol_view);
         startButton = findViewById(R.id.gol_start);
         startButton.setText("Start");
+        resetButton = findViewById(R.id.gol_reset);
+        resetButton.setText("Reset");
         Spinner shapeSpinner = findViewById(R.id.gol_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.shapeArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -42,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         dv.changeState();
     }
 
+    @SuppressLint("SetTextI18n")
+    public void resetClicked(View v){
+        dv.reset();
+    }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String a = (String)adapterView.getItemAtPosition(i);

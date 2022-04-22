@@ -25,6 +25,13 @@
         android:id="@+id/gol_start"
         android:onClick="startClicked"
         tools:ignore="OnClick,UsingOnClickInXml" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gol_reset"
+        android:onClick="resetClicked"
+        android:layout_marginStart="5dp"
+        tools:ignore="OnClick,UsingOnClickInXml" />
 
   </LinearLayout>
   <com.example.dynamicgraphics.DynamicView

@@ -277,4 +277,10 @@ public class DynamicView extends View {
         numCellsHeight = viewHeight / size;
         numCellsWidth = viewWidth / size;
     }
+
+    public void reset(){
+        for(int i = 0; i < cells.size(); i++){
+            cells.get(i).reset();
+        }
+    }
 }

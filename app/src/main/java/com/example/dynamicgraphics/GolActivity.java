@@ -14,4 +14,7 @@ public class GolActivity extends AppCompatActivity {
 
     public void startClicked(View view) {
     }
+
+    public void resetClicked(View view) {
+    }
 }

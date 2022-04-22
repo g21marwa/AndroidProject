@@ -77,4 +77,9 @@ class Cell{
       alive = true;
       nextAlive = true;
    }
+   public void reset(){
+      alive = false;
+      nextAlive = false;
+      tempAlive = false;
+   }
 }
