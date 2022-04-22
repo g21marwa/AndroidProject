@@ -4,18 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
 public class DynamicView extends View {
     //Variables for drawing
@@ -23,7 +22,6 @@ public class DynamicView extends View {
     private Bitmap frame ;
     private Rect bounds;
     private Paint paint ;
-    private Random random;
 
     //variables for handling cells
     private final ArrayList<Cell> cells = new ArrayList<>();
@@ -37,6 +35,7 @@ public class DynamicView extends View {
     private String selectedShape = "";
     private List<Cell> prevTempCells;
     private int prevFreehand = 0;
+
 
     public DynamicView(Context context, AttributeSet attr){
         super(context, attr);
@@ -60,8 +59,6 @@ public class DynamicView extends View {
     protected void onDraw(Canvas canvas){
         //Error handler. onDraw executes before we initialize variables
         if(hasLoaded) {
-            paint.setColor(Color.argb(255, random.nextInt(255),
-            random.nextInt(255), random.nextInt(255)));
             if (state) {
                 for (int i = 0; i < cells.size(); i++) {
                     cells.get(i).draw(canvas, paint);
@@ -272,7 +269,6 @@ public class DynamicView extends View {
         frame = Bitmap.createBitmap(viewWidth, viewHeight, Bitmap.Config.ARGB_8888);
         bounds = new Rect(0, 0, 0, 0);
         paint = new Paint();
-        random = new Random();
 
         numCellsHeight = viewHeight / size;
         numCellsWidth = viewWidth / size;

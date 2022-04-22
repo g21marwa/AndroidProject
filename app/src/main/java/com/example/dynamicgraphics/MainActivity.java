@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.dynamicgraphics.FlappyBird.BirdActivity;
 import com.example.dynamicgraphics.Gol.DynamicView;
 import com.example.dynamicgraphics.Gol.GolActivity;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void startActivityClicked(View view) {
-        Intent i = new Intent(MainActivity.this, GolActivity.class);
+        Intent i = new Intent(MainActivity.this, BirdActivity.class);
         startActivity(i);
     }
 }
