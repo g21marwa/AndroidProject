@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">DynamicGraphics</string>
+    <string name="start_activity">Start activity</string>
+    <string name="gol_reset_name">Reset</string>
+    <string name="gol_start_name">Start</string>
+    <string name="gol_stop_name">Stop</string>
     <string-array name="shapeArray">
         <item>Freehand</item>
         <item>Shape 1</item>

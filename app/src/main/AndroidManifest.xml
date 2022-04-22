@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DynamicGraphics" >
         <activity
-            android:name=".GolActivity"
+            android:name=".Gol.GolActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

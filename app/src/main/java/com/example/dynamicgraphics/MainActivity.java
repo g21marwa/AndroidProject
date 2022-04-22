@@ -3,6 +3,7 @@ package com.example.dynamicgraphics;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,53 +12,22 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private DynamicView dv;
-    private Button startButton;
-    private Button resetButton;
+import com.example.dynamicgraphics.Gol.DynamicView;
+import com.example.dynamicgraphics.Gol.GolActivity;
+
+public class MainActivity extends AppCompatActivity{
+
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //content is gol atm. This should be in the gol activity late(maybe)
-        setContentView(R.layout.activity_gol);
-        dv = findViewById(R.id.gol_view);
-        startButton = findViewById(R.id.gol_start);
-        startButton.setText("Start");
-        resetButton = findViewById(R.id.gol_reset);
-        resetButton.setText("Reset");
-        Spinner shapeSpinner = findViewById(R.id.gol_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.shapeArray, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        shapeSpinner.setAdapter(adapter);
-        shapeSpinner.setOnItemSelectedListener(this);
+        setContentView(R.layout.activity_main);
     }
 
-    @SuppressLint("SetTextI18n")
-    public void startClicked(View v){
-        if(startButton.getText().toString().equals("Start")){
-            startButton.setText("Stop");
-        }
-        else{
-            startButton.setText("Start");
-        }
-        dv.changeState();
-    }
-
-    @SuppressLint("SetTextI18n")
-    public void resetClicked(View v){
-        dv.reset();
-    }
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String a = (String)adapterView.getItemAtPosition(i);
-        Log.d("asd", a);
-        dv.setSelectedShape(a);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-        Log.d("asd", "a");
+    public void startActivityClicked(View view) {
+        Intent i = new Intent(MainActivity.this, GolActivity.class);
+        startActivity(i);
     }
 }

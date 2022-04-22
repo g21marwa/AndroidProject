@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GolActivity">
+    tools:context=".Gol.GolActivity">
 
 
   <LinearLayout
@@ -34,7 +34,7 @@
         tools:ignore="OnClick,UsingOnClickInXml" />
 
   </LinearLayout>
-  <com.example.dynamicgraphics.DynamicView
+  <com.example.dynamicgraphics.Gol.DynamicView
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:background="@color/black"

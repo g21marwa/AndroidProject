@@ -1,4 +1,4 @@
-package com.example.dynamicgraphics;
+package com.example.dynamicgraphics.Gol;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
