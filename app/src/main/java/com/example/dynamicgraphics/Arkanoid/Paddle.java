@@ -20,6 +20,7 @@ class Paddle {
    public void draw(Canvas c, Paint p){
       p.setColor(Color.parseColor("#00ffff"));
       c.drawRect(pos[0], pos[1], pos[0]+paddleWidth, pos[1]+paddleHeight, p);
+
    }
 
    public void move(float posX){

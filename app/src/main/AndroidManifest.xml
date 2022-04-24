@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DynamicGraphics">
         <activity
+            android:name=".Hangman.HangmanActivity"
+            android:exported="false" />
+        <activity
             android:name=".Arkanoid.ArkanoidActivity"
             android:exported="false" />
         <activity
