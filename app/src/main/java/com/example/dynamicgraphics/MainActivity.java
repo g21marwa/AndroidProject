@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.dynamicgraphics.Arkanoid.ArkanoidActivity;
 import com.example.dynamicgraphics.FlappyBird.BirdActivity;
 import com.example.dynamicgraphics.Gol.DynamicView;
 import com.example.dynamicgraphics.Gol.GolActivity;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void startActivityClicked(View view) {
-        Intent i = new Intent(MainActivity.this, SnakeActivity.class);
+        Intent i = new Intent(MainActivity.this, ArkanoidActivity.class);
         startActivity(i);
     }
 }
