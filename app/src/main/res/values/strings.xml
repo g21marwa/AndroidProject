@@ -17,4 +17,6 @@
 
     <string name="arkanoid_score">Score: 0</string>
     <string name="arkanoid_overlay">Tap the screen to\n start a new game</string>
+
+    <string name="hangman_button">Send</string>
 </resources>

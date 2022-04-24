@@ -16,6 +16,7 @@ import com.example.dynamicgraphics.Arkanoid.ArkanoidActivity;
 import com.example.dynamicgraphics.FlappyBird.BirdActivity;
 import com.example.dynamicgraphics.Gol.DynamicView;
 import com.example.dynamicgraphics.Gol.GolActivity;
+import com.example.dynamicgraphics.Hangman.HangmanActivity;
 import com.example.dynamicgraphics.Snake.SnakeActivity;
 
 public class MainActivity extends AppCompatActivity{
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void startActivityClicked(View view) {
-        Intent i = new Intent(MainActivity.this, ArkanoidActivity.class);
+        Intent i = new Intent(MainActivity.this, HangmanActivity.class);
         startActivity(i);
     }
 }
