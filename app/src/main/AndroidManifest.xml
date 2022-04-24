@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DynamicGraphics">
         <activity
+            android:name=".Snake.SnakeActivity"
+            android:exported="false" />
+        <activity
             android:name=".FlappyBird.BirdActivity"
             android:exported="false" />
         <activity

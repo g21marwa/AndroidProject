@@ -11,4 +11,7 @@
 
     <string name="bird_score">Score: 0</string>
     <string name="bird_overlay">Tap the screen to\n start a new game</string>
+
+    <string name="snake_score">Score: 0</string>
+    <string name="snake_overlay">Tap the screen to\n start a new game</string>
 </resources>
