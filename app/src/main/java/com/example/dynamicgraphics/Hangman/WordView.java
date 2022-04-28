@@ -64,8 +64,9 @@ public class WordView extends View {
                words.add(wholeWord.substring(numLettersPerRow*i));
             }
          }
-
-
+         int calcViewHeight = (int)(letterHeight+letterHeight*(numSplits-1)+60);
+         getLayoutParams().height = calcViewHeight;
+         setLayoutParams(getLayoutParams());
          invalidate();
       }
    }

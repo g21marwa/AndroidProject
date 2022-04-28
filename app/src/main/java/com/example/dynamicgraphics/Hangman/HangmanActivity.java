@@ -33,7 +33,7 @@ public class HangmanActivity extends AppCompatActivity {
         words.add("test");
         words.add("something horrible is happening at the store where i work");
         words.add("puppy");
-        wv.setWord(words.get(1));
+        wv.setWord(words.get(0));
 
     }
 
