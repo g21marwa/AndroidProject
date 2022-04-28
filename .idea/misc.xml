@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/DynamicGraphics/app/src/main/res/font/roboto.xml" value="0.20520833333333333" />
         <entry key="..\:/AndroidProjects/DynamicGraphics/app/src/main/res/layout/activity_arkanoid.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/DynamicGraphics/app/src/main/res/layout/activity_bird.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/DynamicGraphics/app/src/main/res/layout/activity_go_lactivity.xml" value="0.10009057971014493" />

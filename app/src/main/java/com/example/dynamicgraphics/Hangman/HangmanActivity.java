@@ -2,6 +2,7 @@ package com.example.dynamicgraphics.Hangman;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ public class HangmanActivity extends AppCompatActivity {
     private EditText et;
     private List<String> words;
     private Button send;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +31,10 @@ public class HangmanActivity extends AppCompatActivity {
         send = findViewById(R.id.hangman_send);
         words = new ArrayList<>();
         words.add("test");
-        words.add("something horrible");
+        words.add("something horrible is happening at the store where i work");
         words.add("puppy");
-        wv.setWord(words.get(0));
+        wv.setWord(words.get(1));
+
     }
 
     public void sendClicked(View view) {

@@ -11,14 +11,15 @@
         android:background="@color/purple_700"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/hangman_word_view"/>
+        android:id="@+id/hangman_word_view" />
     <com.example.dynamicgraphics.Hangman.HangmanView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/hangman_word_view"
         app:layout_constraintBottom_toTopOf="@+id/hangman_text_input"
-        android:id="@+id/hangman_view"/>
+        android:id="@+id/hangman_view"
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
