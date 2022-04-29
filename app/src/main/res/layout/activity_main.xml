@@ -13,7 +13,7 @@
         android:layout_marginStart="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/start_activity"
+        android:text="@string/start_activity_flappy_bird"
         tools:ignore="OnClick,UsingOnClickInXml" />
     <Button
         android:layout_width="wrap_content"
@@ -21,9 +21,9 @@
         android:id="@+id/main_start_gol"
         android:onClick="startActivityGolClicked"
         android:layout_marginStart="5dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_start_flappy_bird"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/start_activity"
+        android:text="@string/start_activity_gol"
         tools:ignore="OnClickGol,UsingOnClickInXml" />
     <Button
         android:layout_width="wrap_content"
@@ -31,9 +31,9 @@
         android:id="@+id/main_start_arkanoid"
         android:onClick="startActivityArkanoidClicked"
         android:layout_marginStart="5dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_start_gol"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/start_activity"
+        android:text="@string/start_activity_arkanoid"
         tools:ignore="OnClick,UsingOnClickInXml" />
     <Button
         android:layout_width="wrap_content"
@@ -41,9 +41,9 @@
         android:id="@+id/main_start_snake"
         android:onClick="startActivitySnakeClicked"
         android:layout_marginStart="5dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_start_arkanoid"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/start_activity"
+        android:text="@string/start_activity_sake"
         tools:ignore="OnClick,UsingOnClickInXml" />
     <Button
         android:layout_width="wrap_content"
@@ -51,9 +51,9 @@
         android:id="@+id/main_start_hangman"
         android:onClick="startActivityHangmanClicked"
         android:layout_marginStart="5dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_start_snake"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/start_activity"
+        android:text="@string/start_activity_hangman"
         tools:ignore="OnClick,UsingOnClickInXml" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
