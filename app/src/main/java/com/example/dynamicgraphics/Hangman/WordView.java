@@ -22,7 +22,8 @@ public class WordView extends View {
    private boolean hasLoaded;
    private Paint p;
    private final float[] startPos = {0,0};
-   private ArrayList<Character> letterGuesses;
+   private ArrayList<String> letterGuesses;
+   private ArrayList<String> correctLetters;
    public WordView(Context context, AttributeSet attr){
       super(context, attr);
    }
@@ -33,6 +34,8 @@ public class WordView extends View {
       super.onWindowFocusChanged(hasWindowFocus);
       if(!hasLoaded){
          hasLoaded = true;
+         letterGuesses = new ArrayList<>();
+         correctLetters = new ArrayList<>();
          Typeface mono = getResources().getFont(R.font.roboto);
          p = new Paint();
          p.setTypeface(mono);
@@ -80,8 +83,10 @@ public class WordView extends View {
 
                if(letter.trim().length() > 0){
                   nextPos = (letterWidth * (j-numLetterTrimmed)) + (50 * (j-numLetterTrimmed));
-                  canvas.drawText(letter, nextPos, letterHeight+letterHeight*i, p);
-                  canvas.drawRect(nextPos, letterHeight+letterHeight*i+10, nextPos+letterWidth+10,letterHeight+letterHeight*i+20, p);
+                  if(correctLetters.contains(letter)) {
+                     canvas.drawText(letter, nextPos, letterHeight + letterHeight * i, p);
+                     canvas.drawRect(nextPos, letterHeight + letterHeight * i + 10, nextPos + letterWidth + 10, letterHeight + letterHeight * i + 20, p);
+                  }
                }
                else{
                   if(j == 0){
@@ -96,5 +101,24 @@ public class WordView extends View {
 
    public void setWord(String myWord){
       word = myWord.toLowerCase();
+   }
+
+   public boolean makeFullGuess(String guess){
+      letterGuesses.add(guess);
+      if(word.toString().equals(guess)){
+         return true;
+      }
+      return false;
+   }
+   public int makeGuess(String guess){
+      if(!letterGuesses.contains(guess)) {
+         letterGuesses.add(guess);
+         if (word.contains(guess)) {
+            correctLetters.add(guess);
+            return 0;
+         }
+         return 1;
+      }
+      return 2;
    }
 }

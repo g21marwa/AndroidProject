@@ -23,6 +23,8 @@ public class HangmanActivity extends AppCompatActivity {
     private EditText et;
     private List<String> words;
     private Button send;
+    private boolean win;
+    private boolean lose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class HangmanActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 if (i == EditorInfo.IME_ACTION_DONE) {
-                    
+                    makeGuess();
                     return true;
                 }
                 return false;
@@ -51,5 +53,32 @@ public class HangmanActivity extends AppCompatActivity {
 
     public void sendClicked(View view) {
         //et.getText();
+        makeGuess();
+    }
+    private void makeGuess(){
+        String text = et.getText().toString();
+        if(text.length() > 1){
+            if(wv.makeFullGuess(text)){
+                win = true;
+            }
+            else{
+                if(hv.wrong()){
+                    lose = true;
+                }
+            }
+        }
+        else{
+            if(wv.makeGuess(text) == 1){
+                if(hv.wrong()){
+                    lose = true;
+                }
+            }
+            else if(wv.makeGuess(text) == 2){
+                //guess has already been made
+            }
+            else{
+                //correct guess
+            }
+        }
     }
 }

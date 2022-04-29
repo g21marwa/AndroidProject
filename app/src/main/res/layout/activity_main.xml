@@ -8,8 +8,48 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/main_start_activity"
-        android:onClick="startActivityClicked"
+        android:id="@+id/main_start_flappy_bird"
+        android:onClick="startActivityFlappyClicked"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/start_activity"
+        tools:ignore="OnClick,UsingOnClickInXml" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_start_gol"
+        android:onClick="startActivityGolClicked"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/start_activity"
+        tools:ignore="OnClickGol,UsingOnClickInXml" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_start_arkanoid"
+        android:onClick="startActivityArkanoidClicked"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/start_activity"
+        tools:ignore="OnClick,UsingOnClickInXml" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_start_snake"
+        android:onClick="startActivitySnakeClicked"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/start_activity"
+        tools:ignore="OnClick,UsingOnClickInXml" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_start_hangman"
+        android:onClick="startActivityHangmanClicked"
         android:layout_marginStart="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

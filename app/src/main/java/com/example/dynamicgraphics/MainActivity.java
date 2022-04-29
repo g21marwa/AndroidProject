@@ -30,7 +30,28 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
     }
 
-    public void startActivityClicked(View view) {
+
+    public void startActivityArkanoidClicked(View view) {
+        Intent i = new Intent(MainActivity.this, ArkanoidActivity.class);
+        startActivity(i);
+    }
+
+    public void startActivityGolClicked(View view) {
+        Intent i = new Intent(MainActivity.this, GolActivity.class);
+        startActivity(i);
+    }
+
+    public void startActivityFlappyClicked(View view) {
+        Intent i = new Intent(MainActivity.this, BirdActivity.class);
+        startActivity(i);
+    }
+
+    public void startActivitySnakeClicked(View view) {
+        Intent i = new Intent(MainActivity.this, SnakeActivity.class);
+        startActivity(i);
+    }
+
+    public void startActivityHangmanClicked(View view) {
         Intent i = new Intent(MainActivity.this, HangmanActivity.class);
         startActivity(i);
     }
