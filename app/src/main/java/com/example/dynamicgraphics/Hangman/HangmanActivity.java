@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.dynamicgraphics.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -34,7 +37,16 @@ public class HangmanActivity extends AppCompatActivity {
         words.add("something horrible is happening at the store where i work");
         words.add("puppy");
         wv.setWord(words.get(0));
-
+        et.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_DONE) {
+                    
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     public void sendClicked(View view) {

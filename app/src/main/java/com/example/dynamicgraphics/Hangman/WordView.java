@@ -21,15 +21,13 @@ public class WordView extends View {
    private ArrayList<String> words;
    private boolean hasLoaded;
    private Paint p;
-   private float viewHeight, viewWidth;
-   private float[] startPos = {0,0};
+   private final float[] startPos = {0,0};
    private ArrayList<Character> letterGuesses;
    public WordView(Context context, AttributeSet attr){
       super(context, attr);
    }
    private String letter;
    private float letterHeight, letterWidth;
-   private int numWordsInARow;
    @Override
    public void onWindowFocusChanged(boolean hasWindowFocus) {
       super.onWindowFocusChanged(hasWindowFocus);
@@ -51,9 +49,9 @@ public class WordView extends View {
          Rect bounds = new Rect();
          p.getTextBounds(letter, 0, letter.length(), bounds);
          letterWidth = p.measureText(letter);
-         viewWidth = getWidth();
+         float viewWidth = getWidth();
          int numSplits = (int)(((letterWidth) * word.length() + word.length()*50) / (viewWidth))+1;
-         int numLettersPerRow = (int)(viewWidth/(letterWidth+50));
+         int numLettersPerRow = (int)(viewWidth /(letterWidth+50));
          for(int i = 0; i < numSplits; i++){
             String wholeWord = word;
             if(i != numSplits-1){
@@ -64,8 +62,7 @@ public class WordView extends View {
                words.add(wholeWord.substring(numLettersPerRow*i));
             }
          }
-         int calcViewHeight = (int)(letterHeight+letterHeight*(numSplits-1)+60);
-         getLayoutParams().height = calcViewHeight;
+         getLayoutParams().height = (int)(letterHeight+letterHeight*(numSplits-1)+60);
          setLayoutParams(getLayoutParams());
          invalidate();
       }
@@ -74,8 +71,7 @@ public class WordView extends View {
    protected void onDraw(Canvas canvas) {
       super.onDraw(canvas);
       if(hasLoaded){
-         float nextPos = 0;
-         canvas.drawLine(0, getHeight(), getWidth(), 0, p);
+         float nextPos;
          for(int i = 0; i < words.size(); i++) {
             int numLetterTrimmed = 0;
             for(int j = 0; j < words.get(i).length(); j++) {

@@ -15,7 +15,7 @@
     <com.example.dynamicgraphics.Hangman.HangmanView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/black"
+        android:background="@color/purple_200"
         app:layout_constraintTop_toBottomOf="@+id/hangman_word_view"
         app:layout_constraintBottom_toTopOf="@+id/hangman_text_input"
         android:id="@+id/hangman_view"
@@ -38,6 +38,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/hangman_send"
         android:id="@+id/hangman_text_input"
-        android:autofillHints="letter" />
+        android:autofillHints="letter"
+        android:inputType="text"
+        android:imeOptions="actionDone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
