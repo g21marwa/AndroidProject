@@ -24,6 +24,7 @@ public class ArkanoidView extends View {
    private ArrayList<Block> blocks;
    private int points = 0;
    private int numHits = 0;
+   private int[][] blockShape;
    public ArkanoidView(Context context, AttributeSet attr){
       super(context, attr);
    }
@@ -101,18 +102,6 @@ public class ArkanoidView extends View {
       hasLoaded = true;
       int viewHeight = getHeight();
       int viewWidth = getWidth();
-      int[][] blockShape = {
-              {0, 0, 0, 0, 1, 0, 0, 0, 0},
-              {0, 0, 0, 1, 1, 1, 0, 0, 0},
-              {0, 0, 1, 1, 1, 1, 1, 0, 0},
-              {0, 1, 1, 1, 1, 1, 1, 1, 0},
-              {1, 1, 1, 1, 1, 1, 1, 1, 1},
-              {1, 1, 1, 1, 1, 1, 1, 1, 1},
-              {0, 1, 1, 1, 1, 1, 1, 1, 0},
-              {0, 0, 1, 1, 1, 1, 1, 0, 0},
-              {0, 0, 0, 1, 1, 1, 0, 0, 0},
-              {0, 0, 0, 0, 1, 0, 0, 0, 0},
-      } ;
 
       blocks = new ArrayList<>();
       float blockWidth = viewWidth / 9.0f;
@@ -135,6 +124,11 @@ public class ArkanoidView extends View {
       paddle = new Paddle(viewWidth, viewHeight);
       ball = new Ball(viewWidth, viewHeight);
    }
+
+   public void setBlockShape(int[][] blockShape) {
+      this.blockShape = blockShape;
+   }
+
    private void reset(){
       initVariables();
       overlayText.setVisibility(View.INVISIBLE);
