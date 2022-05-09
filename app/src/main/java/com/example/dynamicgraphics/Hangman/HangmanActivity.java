@@ -44,7 +44,6 @@ public class HangmanActivity extends AppCompatActivity {
     }
 
     public void sendClicked(View view) {
-        //et.getText();
         makeGuess();
     }
     private void makeGuess(){
@@ -59,8 +58,7 @@ public class HangmanActivity extends AppCompatActivity {
                 hv.wrong();
             }
             else {
-                wv.makeGuess(text);//guess has already been made
-//correct guess
+                wv.makeGuess(text);
             }
         }
     }
