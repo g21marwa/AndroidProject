@@ -8,6 +8,7 @@
     <string name="gol_reset_name">Reset</string>
     <string name="gol_start_name">Start</string>
     <string name="gol_stop_name">Stop</string>
+    <string name="about">About</string>
     <string-array name="shapeArray">
         <item>Freehand</item>
         <item>Shape 1</item>
