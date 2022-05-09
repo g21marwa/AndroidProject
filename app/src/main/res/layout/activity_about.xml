@@ -5,5 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".About">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/about_header"
+        android:id="@+id/aboutHeader"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/aboutHeader"
+        android:text="@string/about_text"
+        android:id="@+id/aboutText"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,7 @@ public class ArkanoidView extends View {
       if (hasLoaded) {
 
          paddle.draw(canvas, paint);
-         if(numHits == 1){
+         if(numHits >= 50){
             for(int i = 0 ; i < blocks.size();i++) {
                blocks.get(i).reset();
             }

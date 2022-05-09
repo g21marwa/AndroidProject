@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DynamicGraphics</string>
+    <string name="app_name">Games!!</string>
     <string name="start_activity_gol">Start Game of life</string>
     <string name="start_activity_sake">Start Snake</string>
     <string name="start_activity_arkanoid">Start Arkanoid</string>
@@ -9,6 +9,8 @@
     <string name="gol_start_name">Start</string>
     <string name="gol_stop_name">Stop</string>
     <string name="about">About</string>
+    <string name="about_header">This app is for you</string>
+    <string name="about_text">This app is for you whom are bored and have a low quality standard for your games.</string>
     <string-array name="shapeArray">
         <item>Freehand</item>
         <item>Shape 1</item>

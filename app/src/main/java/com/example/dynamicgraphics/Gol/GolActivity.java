@@ -1,5 +1,6 @@
 package com.example.dynamicgraphics.Gol;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -23,6 +24,10 @@ public class GolActivity extends AppCompatActivity implements AdapterView.OnItem
         setContentView(R.layout.activity_gol);
         //content is gol atm. This should be in the gol activity late(maybe)
         setContentView(R.layout.activity_gol);
+        ActionBar actionbar = getSupportActionBar();
+        if(actionbar != null){
+            actionbar.setTitle("Game Of Life");
+        }
         dv = findViewById(R.id.gol_view);
         startButton = findViewById(R.id.gol_start);
         startButton.setText(R.string.gol_start_name);
