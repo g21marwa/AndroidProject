@@ -1,21 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-                android:id="@+id/recycler_item_table"
-            tools:ignore="UselessParent">
-                <TextView
+            android:id="@+id/recycler_item_table"
+            tools:ignore="UselessParent"
+            android:stretchColumns="*"
+            android:layout_gravity="center"
+            >
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                        <TextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/itemHeaderCreator"
+                                android:text="@string/headerCretor"
+                                android:gravity="center"/>
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/itemHeaderGameName"
+                            android:text="@string/headerGame"
+                            android:gravity="center"/>
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/itemHeaderLocation"
+                            android:text="@string/headerFrom"
+                            android:gravity="center"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/itemHeader"
+                            android:text=""
+                            android:layout_column="1"
+                            android:gravity="center"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/itemCreator"
+                            android:text=""
+                            android:gravity="center"/>
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/itemLocation"
+                            android:text=""
+                            android:layout_column="2"
+                            android:gravity="center"/>
+                </TableRow>
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/itemHeader"
-                    android:text=""/>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/gameButton"/>
+                    android:layout_height="fill_parent">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_span="3"
+                            android:id="@+id/gameButton"/>
+                </TableRow>
         </TableLayout>
 </LinearLayout>

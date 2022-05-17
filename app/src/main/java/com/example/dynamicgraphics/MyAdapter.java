@@ -52,6 +52,8 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
       Log.d("asd", localDataSet.get(position).getName());
       Log.d("asd", "" + position);
       holder.getTv().setText(localDataSet.get(position).getName());
+      holder.getTvCreator().setText(localDataSet.get(position).getCompany());
+      holder.getTvLocation().setText(localDataSet.get(position).getLocation());
       holder.getBut().setText(localDataSet.get(position).getName());
 
       switch (localDataSet.get(position).getID()) {
@@ -115,14 +117,25 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
    public static class ViewHolder extends RecyclerView.ViewHolder{
       private final TextView tv;
+      private final TextView tvCreator;
+      private final TextView tvLocation;
       private final Button but;
+
       public ViewHolder(View view ){
          super(view);
          tv = view.findViewById(R.id.itemHeader);
+         tvCreator = view.findViewById(R.id.itemCreator);
+         tvLocation = view.findViewById(R.id.itemLocation);
          but = view.findViewById(R.id.gameButton);
 
       }
 
+      public TextView getTvCreator() {
+         return tvCreator;
+      }
+      public TextView getTvLocation() {
+         return tvLocation;
+      }
       public Button getBut() {
          return but;
       }

@@ -11,6 +11,9 @@
     <string name="about">About</string>
     <string name="about_header">This app is for you</string>
     <string name="about_text">This app is for you whom are bored and have a low quality standard for your games.</string>
+    <string name="headerCretor">Created by</string>
+    <string name="headerGame">Game</string>
+    <string name="headerFrom">From</string>
     <string-array name="shapeArray">
         <item>Freehand</item>
         <item>Shape 1</item>
