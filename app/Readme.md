@@ -95,6 +95,8 @@ public void startActivityArkanoidClicked(View view) {
   main.startActivity(i);
 }
 ```
-
 Här kan vi se hur vi lägger till en clicklistener på varje knapp. Och startar en ny aktivitet när det sker. 
 
+Nedan ser vi hur appen ser ut. 
+![game of lite](gameOfLife.png);
+![main activity](mainActivity.png);
