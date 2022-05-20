@@ -59,15 +59,12 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     @Override
     public void onPostExecute(String json) {
-        Log.d("asd1", json);
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(List.class, GameInfo.class);
         JsonAdapter<List<GameInfo>> jsonAdapter = moshi.adapter(type);
         try {
-            Log.d("asd3", json);
             List<GameInfo> gameInfo = jsonAdapter.fromJson(json);
             MyAdapter adapter = new MyAdapter(gameInfo, this);
-            Log.d("asd55", "" + adapter.getItemCount());
             myRecyclerView.setAdapter(adapter);
         }
         catch (Exception e){
