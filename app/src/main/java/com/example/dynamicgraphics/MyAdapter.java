@@ -18,18 +18,19 @@ import com.example.dynamicgraphics.Gol.GolActivity;
 import com.example.dynamicgraphics.Hangman.HangmanActivity;
 import com.example.dynamicgraphics.Snake.SnakeActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-   private final List<GameInfo> localDataSet;
+   private List<GameInfo> localDataSet;
    private final Context main;
    private int[][] arkanoidData;
    private int[][] snakeData;
    private int[][] hangmanData;
    private int[][] golData;
    private int[][] flappyBirdData;
-   public MyAdapter(List<GameInfo> dataSet, Context c){
-      localDataSet = dataSet;
+   public MyAdapter(Context c){
+      localDataSet = new ArrayList<>();
       main = c;
       Log.d("asd5", "" + localDataSet.size());
       arkanoidData = new int[][]{{}};
@@ -37,6 +38,10 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
       hangmanData = new int[][]{{}};
       golData = new int[][]{{}};
       flappyBirdData = new int[][]{{}};
+   }
+
+   public void setLocalDataSet(List<GameInfo> dataSet){
+      localDataSet = dataSet;
    }
 
    @NonNull

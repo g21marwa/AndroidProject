@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
     private RecyclerView myRecyclerView;
-
+    private MyAdapter adapter;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myRecyclerView = findViewById(R.id.recycler_view);
         myRecyclerView.setLayoutManager(mLayoutManager);
+        adapter = new MyAdapter(this);
+        myRecyclerView.setAdapter(adapter);
         String JSON_URL = "https://mobprog.webug.se/json-api?login=G21MARWA";
         new JsonTask(this).execute(JSON_URL);
     }
@@ -64,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         JsonAdapter<List<GameInfo>> jsonAdapter = moshi.adapter(type);
         try {
             List<GameInfo> gameInfo = jsonAdapter.fromJson(json);
-            MyAdapter adapter = new MyAdapter(gameInfo, this);
-            myRecyclerView.setAdapter(adapter);
+            adapter.setLocalDataSet(gameInfo);
+            adapter.notifyDataSetChanged();
         }
         catch (Exception e){
             Log.d("error", e.toString());
